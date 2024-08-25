@@ -81,16 +81,21 @@
 
             const data = { name, phone, email };
             
-            const response = await fetch('https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbwVOu_yRCprb-BnaLPycZeyg29tdfWnO7DWzruGmgDIDT0L2ZU7j9VGdsWvfVuOr88N/exec/exec', {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxVk12tllDOnHKukrciN0cW794RDPP_CaAPmAYuew6drUSYgqlGDa5MBheDcu5nPHg2/exec', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-            const result = await response.json();
-            alert(result.message);
+                const result = await response.json();
+                alert(result.message);
+            } catch (error) {
+                alert('Erro ao enviar o formulário. Tente novamente.');
+                console.error('Erro:', error);
+            }
         });
     </script>
 </body>
